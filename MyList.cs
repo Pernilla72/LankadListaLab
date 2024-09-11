@@ -16,6 +16,21 @@ namespace LänkadListaLab
         private Node<T>? tail;
         public int Count { get; private set; }
 
+        //Ny metod som tar bort upprepning av tidigare kod.
+        private Node<T> GetNodeAt(int index)
+        {
+            if (index < 0 || index >= Count)
+                throw new IndexOutOfRangeException();
+
+            Node<T> current = head;
+            for (int i = 0; i < index; i++)
+            {
+                current = current.Next;
+            }
+
+            return current;
+        }
+
         public MyList()
         {
             head = null;
@@ -52,28 +67,21 @@ namespace LänkadListaLab
                 if (index < 0 || index >= Count)
                     throw new IndexOutOfRangeException();
 
-                    //En referens till den första noden i den länkade listan (head) skapas.Detta gör att vi börjar vid första elementet
-                    //när vi söker efter rätt index. Variablen "current" håller reda på vilken nod i listan vi kollar på.
+                //En referens till den första noden i den länkade listan (head) skapas.Detta gör att vi börjar vid första elementet
+                //när vi söker efter rätt index. Variablen "current" håller reda på vilken nod i listan vi kollar på.
 
-                Node<T> current = head;
-                for (int i = 0; i < index; i++)
-                {
-                    current = current.Next;
-                }
-                return current.Value;
+                return GetNodeAt(index).Value; //Ny metod som tar bort upprepning av tidigare kod.
+
             }
             set  //Ändra värdet på en viss position
             {
                         //Den här kontrollen ser till att det efterfrågade indexet är giltigt.
                 if (index < 0 || index >= Count)
                     throw new IndexOutOfRangeException();
-                Node<T> current = head;
-                for (int i = 0; i < index; i++)
-                {
-                    current = current.Next;
-                }
-                        //När rätt nod har hittats så tilldelas det nya värdet till "value"
-                current.Value = value;
+               
+                  //När rätt nod har hittats så tilldelas det nya värdet till "value"
+              
+                GetNodeAt(index).Value = value;  //Ny metod som tar bort upprepning av tidigare kod.
             }
         }
 
@@ -136,11 +144,8 @@ namespace LänkadListaLab
             if (index < 0 || index >= Count - 1)
                 throw new IndexOutOfRangeException();
 
-            Node<T> current = head;
-            for (int i = 0; i < index; i++)
-            {
-                current = current.Next;
-            }
+            Node<T> current = GetNodeAt(index); //Ny metod som tar bort upprepning av tidigare kod.
+
             if (current.Next == tail)
             {
                 tail = current;
@@ -155,11 +160,7 @@ namespace LänkadListaLab
             if (index < 0 || index >= Count)
                 throw new IndexOutOfRangeException();
 
-            Node<T> current = head;
-            for (int i = 0; i < index; i++)
-            {
-                current = current.Next;
-            }
+            Node<T> current = GetNodeAt(index);   //Ny metod som tar bort upprepning av tidigare kod.
             current.Next = null;
             tail = current;
             Count = index + 1;
