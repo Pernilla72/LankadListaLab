@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
+//Changes after Codereview 2024-09-11 branch ChangesAfterCodereview in GitHUb
+
 //Vet att man ska undvika å, ä och ö i namespace, men nu råkade det bli så....
 
 namespace LänkadListaLab
