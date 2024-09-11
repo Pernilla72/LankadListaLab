@@ -19,13 +19,11 @@ namespace LänkadListaLab
             list.AddElement(3);
             list.AddElement(20);
 
-
             Console.WriteLine("Original list:");
             foreach (var item in list)
             {
                 Console.WriteLine(item);
             }
-
             Console.WriteLine(); // Ny rad efter listan
 
             // Visa menyn för användaren
@@ -68,7 +66,7 @@ namespace LänkadListaLab
                         Console.Write(item + " ");  // Skriver ut varje element i listan
                     }
                     Console.WriteLine();
-                    break;
+                break;
 
             }
 

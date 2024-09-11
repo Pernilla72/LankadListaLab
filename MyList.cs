@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-//Changes after Codereview 2024-09-11 branch ChangesAfterCodereview in GitHUb
+//Ändrar från en enkellänkad till en dubbellänkad lista.
 
 //Vet att man ska undvika å, ä och ö i namespace, men nu råkade det bli så....
 
@@ -85,7 +85,7 @@ namespace LänkadListaLab
             }
         }
 
-        // Ta bort det sista värdet i listan
+        // Ta bort det sista värdet i den dubbellänkade-listan
         public void RemoveLastElement()
         {
             if (head == null) return;
@@ -96,13 +96,9 @@ namespace LänkadListaLab
             }
             else
             {
-                Node<T> current = head;
-                while (current.Next != tail)
-                {
-                    current = current.Next;
-                }
-                current.Next = null;
-                tail = current;
+                Node<T> PreviousNode = tail.Previous;  //Hoppar direkt till den näst sista noden.
+                PreviousNode.Next = null;              //Sätter sista noden till null
+                tail = PreviousNode;                   // Tail uppdateras till att peka på nya sista noden (som tidigare var näst sista)
             }
             Count--;
         }
@@ -119,6 +115,10 @@ namespace LänkadListaLab
             if (index == 0)
             {
                 newNode.Next = head;
+                if (head != null)
+                {
+                    head.Previous = newNode;
+                }
                 head = newNode;
             }
             else
