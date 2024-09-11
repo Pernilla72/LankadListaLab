@@ -105,7 +105,7 @@ namespace LänkadListaLab
 
         // Lägg till ett värde före ett specifikt index, tar ett värde och ett index som parameter
 
-        public void AddBeforeElement(T value, int index)
+        public void AddBeforeElement(T value, int index)   //Uppdaterad till dubbellänkad-lista.
         {
             if (index < 0 || index >= Count)
                 throw new IndexOutOfRangeException();
@@ -129,6 +129,13 @@ namespace LänkadListaLab
                     current = current.Next;
                 }
                 newNode.Next = current.Next;
+                newNode.Previous = current;
+
+                if (current.Next != null)
+                {
+                    current.Next.Previous = newNode;
+                }
+
                 current.Next = newNode;
             }
 
@@ -139,7 +146,7 @@ namespace LänkadListaLab
         
 
         // Ta bort ett värde utifrån ett specifikt index
-        public void RemoveAfterElement(int index)
+        public void RemoveAfterElement(int index)   //Uppdaterad till dubbellänkad-lista
         {
             if (index < 0 || index >= Count - 1)
                 throw new IndexOutOfRangeException();
@@ -150,12 +157,16 @@ namespace LänkadListaLab
             {
                 tail = current;
             }
+            else 
+            { 
+            current.Next.Next.Previous = current;
+            }
             current.Next = current.Next.Next;
             Count--;
         }
 
         // Ta bort alla värden efter ett specifikt index
-        public void RemoveAllAfterIndex(int index)
+        public void RemoveAllAfterIndex(int index)  //Ingen ändring krävs eftersom man inte påverkar previous alls.
         {
             if (index < 0 || index >= Count)
                 throw new IndexOutOfRangeException();
@@ -167,12 +178,6 @@ namespace LänkadListaLab
         }
 
        
-        //public override string? ToString()
-        //{
-        //    return base.ToString();
-        //}
-
-
         // Returnerar en array av värdena i listan
         public T[] ToArray()
         {
