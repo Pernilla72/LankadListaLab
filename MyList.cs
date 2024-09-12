@@ -183,7 +183,7 @@ namespace LänkadListaLab
             return (T[])ToArray().Clone();
         }
 
-        // Sorterar listan i stigande ordning
+        // Sorterar listan i stigande eller fallande ordning, utifrån ett bolskt värde.
         public void SortMyList(bool ascending = true)
         {
             if (Count <= 1) return;

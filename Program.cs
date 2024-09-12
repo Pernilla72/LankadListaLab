@@ -32,7 +32,6 @@ namespace LänkadListaLab
             Console.WriteLine($"\nChoose what to do with this list:");
             Console.WriteLine("A = Add a new element");
             Console.WriteLine("S = Sort the list acsending");
-            Console.WriteLine("R = Remove all elements after a certain index");
             Console.WriteLine("E = Exit");
             string choice = Console.ReadLine().ToUpper(); // Gör om valet till versaler 
 
@@ -72,7 +71,7 @@ namespace LänkadListaLab
 
             }
 
-            //Tar bort sista elementet i min orginallista (20)
+            //Tar bort sista elementet i min orginallista (nr 20 (detta är om du inte lagt till nått nummer innan))
 
             list.RemoveLastElement();
             Console.WriteLine("After removing last element:");
@@ -91,6 +90,22 @@ namespace LänkadListaLab
                 Console.WriteLine(item);
             }
 
+            list.SortMyList(true);
+            Console.WriteLine("Sorterad lista i stigande ordning:");
+            foreach (var item in list)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine();
+
+
+            list.SortMyList(false);
+            Console.WriteLine("Sorterad lista i fallande ordning:");
+            foreach (var item in list)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine();
         }
     }
 }
