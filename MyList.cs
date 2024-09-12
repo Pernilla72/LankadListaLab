@@ -206,8 +206,11 @@ namespace LänkadListaLab
             Node<T> current = head;
             while (current != null)
             {
-                yield return current.Value;
-                current = current.Next;
+                yield return current.Value;  //Metoden GetEnumerator returnerar matrisvärdena med hjälp av instruktionen "yield return" .
+                current = current.Next;      //MAn kan säga att den avbryter en metods körning tillfälligt, returnerar ett värde och sen fortsätter
+                                             // där den slutade nästa gång den kallas. Man kan returnera en sekvens utan att skapa en lista/array
+                                             //för den håller saker i minnet....
+                                            // källa Learn Microsoft.com/Concepts/Iterators
             }
         }
 
