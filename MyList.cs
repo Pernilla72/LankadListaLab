@@ -163,11 +163,6 @@ namespace LänkadListaLab
         }
 
        
-        //public override string? ToString()
-        //{
-        //    return base.ToString();
-        //}
-
 
         // Returnerar en array av värdena i listan
         public T[] ToArray()
